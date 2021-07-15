@@ -2,7 +2,7 @@ const { Octokit } = require('@octokit/core');
 
 const octokit = new Octokit();
 
-const sortBys = ['best match'];
+const sortBys = ['followers', 'repositories', 'joined', 'best match'];
 const orders = ['desc', 'asc'];
 
 module.exports = async function searchUsers(q, page, perPage, sortBy, order) {
