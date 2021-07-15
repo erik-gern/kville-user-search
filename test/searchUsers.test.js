@@ -1,4 +1,4 @@
-const searchUsers = require('../src/searchUsers');
+const searchUsers = require('../lib/searchUsers');
 const { expect } = require('chai');
 
 describe('searchUsers()', function(){
