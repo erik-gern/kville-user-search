@@ -36,8 +36,11 @@ describe('components/SearchBar', function(){
 		});
 	});
 	
-	describe('::onUpdate()', function(){
-		
+	describe('::update()', function(){
+		it('updates a state member with the passed-in value', function(){
+			searchBar.update('q', 'foobar');
+			expect(searchBar.state.q).to.equal('foobar');
+		});
 	});
 	
 	describe('::onSubmit()', function(){

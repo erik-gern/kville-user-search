@@ -110,3 +110,6 @@ package-lock.json
 build/*
 build/**
 lib
+
+# secrets
+github.token

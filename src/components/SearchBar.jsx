@@ -3,18 +3,29 @@ const React = require('react');
 module.exports = class SearchBar extends React.Component {
 	state = {
 		q: '',
+		perPage: null,
+		sortBy: null,
+		order: null,
 		expanded: false,
 	};
 	
 	constructor(props) {
 		super(props);
-		this.onUpdate = this.onUpdate.bind(this);
+		this.state = {...this.state,
+			perPage: props.perPage,
+			sortBy: props.sortBy,
+			order: props.order,
+		};
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onExpand = this.onExpand.bind(this);
 		this.onContract = this.onContract.bind(this);
+		this.onToggle = this.onToggle.bind(this);
 	}
 	
-	onUpdate() {
+	update(key, val) {
+		const newState = {};
+		newState[key] = val;
+		this.setState(newState);
 		this.props.onUpdate(this.state);
 	}
 	
@@ -22,12 +33,19 @@ module.exports = class SearchBar extends React.Component {
 		this.props.onSubmit(this.state);
 	}
 	
-	onExpand() {
+	onExpand(e) {
+		e.preventDefault();
 		this.setState({ expanded: true });
 	}
 	
-	onContract() {
+	onContract(e) {
+		e.preventDefault();
 		this.setState({ expanded: false });
+	}
+	
+	onToggle(e) {
+		e.preventDefault();
+		this.setState({ expanded: !this.state.expanded });
 	}
 	
 	render () {
@@ -39,7 +57,7 @@ module.exports = class SearchBar extends React.Component {
 						className="form-control form-control-lg"
 						placeholder="Enter a username or email address..." 
 						value={this.state.q} 
-						onChange={this.onUpdate} />
+						onChange={(e) => { this.update('q', e.target.value); }} />
 					<button className="btn btn-primary" 
 						type="submit" 
 						onClick={this.onSubmit}>
@@ -48,7 +66,7 @@ module.exports = class SearchBar extends React.Component {
 					<button className="btn btn-secondary" 
 						type="button" 
 						title="More Options" 
-						onClick={this.onExpand}>
+						onClick={this.onToggle}>
 						<i className="bi-gear"></i>
 					</button>
 				</div>
@@ -58,24 +76,36 @@ module.exports = class SearchBar extends React.Component {
 							<button type="button" 
 								className="btn-close float-right close-options" 
 								aria-label="Close"
-								onClick={onContract}>
+								onClick={this.onContract}>
 							</button>
 							<div className="row">
 								<div className="col-4">
 									<label htmlFor="perPage" className="form-label">Results per page:</label>
-									<input className="form-control" type="number" min="1" max="100" id="perPage" />
+									<input className="form-control" 
+										type="number" 
+										min="1" 
+										max="100" 
+										id="perPage" 
+										value={this.state.perPage}
+										onChange={(e) => { this.update('perPage', e.target.value); }} />
 								</div>
 								<div className="col-4">
 									<label htmlFor="sortBy" className="form-label">Sort By:</label>
-									<select className="form-control" id="sortBy">
-										<option>Best Match</option>
+									<select className="form-control" 
+										id="sortBy"
+										value={this.state.sortBy}
+										onChange={(e) => { this.update('sortBy', e.target.value); }}>
+										<option value="best match">Best Match</option>
 									</select>
 								</div>
 								<div className="col-4">
 									<label htmlFor="order" className="form-label">Order:</label>
-									<select className="form-control" id="order">
-										<option>Descending</option>
-										<option>Ascending</option>
+									<select className="form-control" 
+										id="order"
+										value={this.state.order}
+										onChange={(e) => { this.update('order', e.target.value); }}>
+										<option value="desc">Descending</option>
+										<option value="asc">Ascending</option>
 									</select>
 								</div>
 							</div>
