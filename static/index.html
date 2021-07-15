@@ -2,8 +2,136 @@
 <html>
 	<head>
 		<title>Kville - GitHub User Search</title>
+		<link rel="stylesheet" href="./css/bootstrap/bootstrap.css">
+		<link rel="stylesheet" href="./css/bootstrap-icons/font/bootstrap-icons.css">
+		<style>
+		.container {
+			max-width: 800px;
+		}
+		.close-options {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		</style>
+		<script src="./js/bootstrap/bootstrap.js"></script>
 	</head>
 	<body>
-		<p>TODO</p>
+		<div class="container mt-3 mb-3">
+			<!-- header -->
+			<h1 class="text-center mb-3">Kville - GitHub User Search</h1>
+			
+			<!-- search bar -->
+			<div class="mb-3">
+				<div class="input-group mb-3">
+					<input 
+						type="text" 
+						class="form-control form-control-lg"
+						placeholder="Enter a username or email address...">
+					<button class="btn btn-primary" type="submit">Search</button>
+					<button class="btn btn-secondary" type="button" title="More Options"><i class="bi-gear"></i></button>
+				</div>
+				<div class="card">
+					<div class="card-body">
+						<button type="button" class="btn-close float-right close-options" aria-label="Close"></button>
+						<div class="row">
+							<div class="col-4">
+								<label for="perPage" class="form-label">Results per page:</label>
+								<input class="form-control" type="number" min="1" max="100" id="perPage">
+							</div>
+							<div class="col-4">
+								<label for="sortBy" class="form-label">Sort By:</label>
+								<select class="form-control" id="sortBy">
+									<option>Best Match</option>
+								</select>
+							</div>
+							<div class="col-4">
+								<label for="order" class="form-label">Order:</label>
+								<select class="form-control" id="order">
+									<option>Descending</option>
+									<option>Ascending</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- paginator (top) -->
+			<div class="row mb-2">
+				<div class="col-sm-3 text-start">
+					<button type="button" class="btn btn-sm btn-outline-secondary">
+						<i class="bi-chevron-compact-left"></i>
+						Previous
+					</button>
+				</div>
+				<div class="col-sm-6 text-center">
+					<i>Page 1 of 10 (2000 total results)</i>
+				</div>
+				<div class="col-sm-3 text-end">
+					<button type="button" class="btn btn-sm btn-outline-secondary">
+						Next
+						<i class="bi-chevron-compact-right"></i>
+					</button>				
+				</div>
+			</div>
+			
+			<!-- results -->
+			<ul class="list-group mb-3">
+				<li class="list-group-item">
+					<h3>User 1</h3>
+					<p>A description of the user here.</p>
+					<a href="#">Repos</a>
+					<a href="#">email@email.com</a>
+				</li>
+				<li class="list-group-item">
+					<h3>User 2</h3>
+					<p>A description of the user here.</p>
+					<a href="#">Repos</a>
+					<a href="#">email@email.com</a>
+				</li>				
+				<li class="list-group-item">
+					<h3>User 3</h3>
+					<p>A description of the user here.</p>
+					<a href="#">Repos</a>
+					<a href="#">email@email.com</a>
+				</li>
+			</ul>
+			
+			<!-- paginator (bottom) -->
+			<div class="row mb-2">
+				<div class="col-sm-3 text-start">
+					<button type="button" class="btn btn-sm btn-outline-secondary">
+						<i class="bi-chevron-compact-left"></i>
+						Previous
+					</button>
+				</div>
+				<div class="col-sm-6 text-center">
+					<i>Page 1 of 10 (2000 total results)</i>
+				</div>
+				<div class="col-sm-3 text-end">
+					<button type="button" class="btn btn-sm btn-outline-secondary">
+						Next
+						<i class="bi-chevron-compact-right"></i>
+					</button>				
+				</div>
+			</div>			
+			
+			<!-- no results -->
+			<p class="text-center"><i>No results found for "foo bar baz"</i></p>
+			
+			<!-- spinner -->
+			<div class="d-flex justify-content-center">
+				<div class="spinner-grow" role="status">
+					<span class="visually-hidden">Loading Results...</span>
+				</div>
+			</div>
+			
+			<!-- error message -->
+			<div class="alert alert-danger alert-dismissible">
+				Something went wrong getting the search results!
+				<button type="button" class="btn-close" aria-label="Close"></button>
+			</div>
+		</div>
 	</body>
 </html>

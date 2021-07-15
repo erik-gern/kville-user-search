@@ -4,7 +4,12 @@
   "description": "Searches github users",
   "main": "main.js",
   "scripts": {
-    "build": "cp static/* build/",
+    "build": "npm run build-clean && npm run build-dirs && npm run build-static && npm run build-icons && npm run build-bootstrap",
+    "build-clean": "rm -rf build/*",
+    "build-dirs": "mkdir build/js && mkdir build/css",
+    "build-static": "cp static/* build/",
+    "build-icons": "cp -R node_modules/bootstrap-icons build/css/bootstrap-icons",
+    "build-bootstrap": "cp -R node_modules/bootstrap/dist/js build/js/bootstrap && cp -R node_modules/bootstrap/dist/css build/css/bootstrap",
     "test": "mocha --recursive*",
     "start": "node main.js",
     "start-dev": "node main.js --port=8800"
@@ -27,6 +32,7 @@
   "dependencies": {
     "@octokit/core": "^3.5.1",
     "bootstrap": "^5.0.2",
+    "bootstrap-icons": "^1.5.0",
     "express": "^4.17.1"
   }
 }
