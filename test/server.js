@@ -30,11 +30,13 @@ describe('[SERVER]', function(){
 	})
 	
 	describe('/search', function(){
-		it('serves the test json object', async function(){
+		it('serves search results from the github api', async function(){
 			const resp = await fetch(`http://localhost:${port}/search`);
 			const json = await resp.json();
-			expect(json).to.eql({ 'status': 'OK' });
 			expect(resp.headers.get('Content-Type')).to.match(/^application\/json/i);
+			expect(json.users).to.be.an('array');
+			expect(json.users.length).to.be.at.least(1);
+			expect(json.total).to.be.at.least(1);
 			return;
 		});
 	});
