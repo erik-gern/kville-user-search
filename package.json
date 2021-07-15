@@ -4,13 +4,14 @@
   "description": "Searches github users",
   "main": "main.js",
   "scripts": {
-    "build": "npm run build-clean && npm run build-dirs && npm run build-static && npm run build-icons && npm run build-bootstrap && npm run build-babel",
+    "build": "npm run build-clean && npm run build-dirs && npm run build-static && npm run build-icons && npm run build-bootstrap && npm run build-babel && npm run build-browserify",
     "build-clean": "rm -rf build/*",
     "build-dirs": "mkdir build/js && mkdir build/css",
     "build-static": "cp static/* build/",
     "build-icons": "cp -R node_modules/bootstrap-icons build/css/bootstrap-icons",
     "build-bootstrap": "cp -R node_modules/bootstrap/dist/js build/js/bootstrap && cp -R node_modules/bootstrap/dist/css build/css/bootstrap",
     "build-babel": "npx babel src -d lib",
+    "build-browserify": "browserify lib/browser.js -o build/js/app.js",
     "test": "mocha --recursive test/*",
     "start": "node main.js",
     "start-dev": "node main.js --port=8800"
@@ -30,6 +31,7 @@
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
+    "browserify": "^17.0.0",
     "chai": "^4.3.4",
     "mocha": "^9.0.2",
     "node-fetch": "^2.6.1"
