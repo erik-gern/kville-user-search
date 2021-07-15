@@ -5,22 +5,21 @@ const ReactDOMServer = require('react-dom/server');
 
 describe('components/Paginator()', function(){
 	
-	const tests = {
-		'renders page stats correctly when results are present': [1, 100, 1000, `Page 1 of 100 (1000 total results)`],
-		'renders no results message with no results': [0, 0, 0, 'No results found'],
-	};
-	
-	Object.keys(tests).forEach(function(desc){
-		const [page, numPages, totalResults, searchStr] = tests[desc];
-		it(desc, function(){
-			let dom = Paginator({
-				page, numPages, totalResults
-			});
-			expect(dom).to.be.an('object');
-			let html = ReactDOMServer.renderToString(dom);
-			html = html.replace(/\<\!\-\- \-\-\>/gi, '');
-			expect(html).to.contain(searchStr);
-		});		
-	})
+	it('renders page stats correctly when results are present', function(){
+		let dom = Paginator({
+			page: 1, numPages: 100, totalResults: 1000
+		});
+		expect(dom).to.be.an('object');
+		let html = ReactDOMServer.renderToString(dom);
+		html = html.replace(/\<\!\-\- \-\-\>/gi, '');
+		expect(html).to.contain('Page 1 of 100 (1000 total results)');
+	});		
+
+	it('renders nothing with no results', function(){
+		let dom = Paginator({
+			page: 0, numPages: 0, totalResults: 0
+		});
+		expect(dom).to.equal('');
+	});
 
 });
