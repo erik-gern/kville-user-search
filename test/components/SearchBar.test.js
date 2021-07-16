@@ -36,6 +36,7 @@ describe('components/SearchBar', function(){
 		});
 	});
 	
+	/*
 	describe('::update()', function(){
 		it('updates a state member with the passed-in value', function(){
 			searchBar.update('q', 'foobar');
@@ -68,6 +69,6 @@ describe('components/SearchBar', function(){
 			}, 10);
 		});		
 	});
-	
+	*/
 
 });

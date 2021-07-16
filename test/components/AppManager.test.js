@@ -23,6 +23,6 @@ describe('components/AppManager', function(){
 			// sanity test
 			expect(html).to.contain('<div');
 		});		
-	})
+	});
 
 });

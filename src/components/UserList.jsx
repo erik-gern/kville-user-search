@@ -17,7 +17,7 @@ module.exports = function UserList (props) {
 								<p>
 									<i className="bi-folder"></i>&nbsp;
 									<a href={user.html_url+'?tab=repositories'} target="_blank">
-										{user.public_repos} {user.public_repo == 1 ? 'repo' : 'repos'}
+										{user.public_repos} {user.public_repos == 1 ? 'repo' : 'repos'}
 									</a>,&nbsp;
 									<a href={user.html_url+'?tab=gists'} target="_blank">
 										{user.public_gists} {user.public_gists == 1 ? 'gist' : 'gists'}

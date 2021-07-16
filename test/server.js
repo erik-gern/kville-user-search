@@ -31,7 +31,7 @@ describe('[SERVER]', function(){
 	
 	describe('/search', function(){
 		it('serves search results from the github api', async function(){
-			const resp = await fetch(`http://localhost:${port}/search`);
+			const resp = await fetch(`http://localhost:${port}/search?q=erik-gern`);
 			const json = await resp.json();
 			expect(resp.headers.get('Content-Type')).to.match(/^application\/json/i);
 			expect(json.users).to.be.an('array');

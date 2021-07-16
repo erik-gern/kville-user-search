@@ -10,7 +10,7 @@ describe('timeElapsed()', function(){
 	});
 	
 	it('takes a number (ms since Unix epoch)', function(){
-		const unixTime = 1000 * 60 * 10; // 10 minutes ago
+		const unixTime = Date.now() - 1000 * 60 * 10; // 10 minutes ago
 		const elapsed = timeElapsed(unixTime);
 		expect(elapsed).to.be.a('string');
 		expect(elapsed).to.contain('minutes ago'); 
