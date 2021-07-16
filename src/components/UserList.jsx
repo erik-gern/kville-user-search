@@ -1,4 +1,5 @@
 const React = require('react');
+const timeElapsed = require('../timeElapsed');
 
 module.exports = function UserList (props) {
 	return (
@@ -6,7 +7,7 @@ module.exports = function UserList (props) {
 			{props.users.map((user) => {
 				return (
 					<li className="list-group-item">
-						<h5 class="card-title"><a href={user.html_url} target="_blank">{user.login}</a></h5>
+						<h5 className="card-title"><a href={user.html_url} target="_blank">{user.login}</a></h5>
 						<div className="row">
 							<div className="col-sm-2">
 								<img src={user.avatar_url} className="img-thumbnail" />
@@ -32,6 +33,12 @@ module.exports = function UserList (props) {
 									<a href={user.html_url+'?tab=following'} target="_blank">
 										following {user.following}
 									</a>
+								</p>
+								<p>
+									<i>
+										Created <abbr title={user.created_at}>{timeElapsed(user.created_at)}</abbr>, 
+										last updated <abbr title={user.updated_at}>{timeElapsed(user.updated_at)}</abbr>
+									</i>
 								</p>
 							</div>
 						</div>
