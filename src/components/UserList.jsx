@@ -6,44 +6,41 @@ module.exports = function UserList (props) {
 		<ul className="list-group mb-3">
 			{props.users.map((user) => {
 				return (
-					<li className="list-group-item">
+					<li key={user.id} className="list-group-item">
 						<h5 className="card-title"><a href={user.html_url} target="_blank">{user.login}</a></h5>
+						
 						<div className="row">
 							<div className="col-sm-2">
 								<img src={user.avatar_url} className="img-thumbnail" />
 							</div>
 							<div className="col-sm-10">
 								<p>
-									<i className="bi-folder"></i> 
+									<i className="bi-folder"></i>&nbsp;
 									<a href={user.html_url+'?tab=repositories'} target="_blank">
 										{user.public_repos} {user.public_repo == 1 ? 'repo' : 'repos'}
-									</a><br />
-									
-									<i className="bi-file-diff"></i> 
+									</a>,&nbsp;
 									<a href={user.html_url+'?tab=gists'} target="_blank">
 										{user.public_gists} {user.public_gists == 1 ? 'gist' : 'gists'}
 									</a><br />
 									
-									<i className="bi-people"></i> 
+									<i className="bi-people"></i>&nbsp;
 									<a href={user.html_url+'?tab=followers'} target="_blank">
 										{user.followers} {user.followers == 1 ? 'follower' : 'followers'}
-									</a><br />
-									
-									<i className="bi-person-check"></i> 
+									</a>,&nbsp;
 									<a href={user.html_url+'?tab=following'} target="_blank">
-										following {user.following}
-									</a>
-								</p>
-								<p>
-									<i>
-										Created <abbr title={user.created_at}>{timeElapsed(user.created_at)}</abbr>, 
-										last updated <abbr title={user.updated_at}>{timeElapsed(user.updated_at)}</abbr>
-									</i>
+										{user.following} following
+									</a><br />
+
+									<i className="bi-calendar2-check"></i> Created <abbr title={user.created_at}>{timeElapsed(user.created_at)}</abbr>, last updated <abbr title={user.updated_at}>{timeElapsed(user.updated_at)}</abbr>
 								</p>
 							</div>
 						</div>
 						
 						<table className="table">
+							<colgroup>
+								<col width="33%" />
+								<col />
+							</colgroup>
 							<tbody>
 								<tr>
 									<td className="text-end"><b>Name:</b></td> 
