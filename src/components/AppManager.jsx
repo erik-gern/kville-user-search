@@ -153,7 +153,7 @@ module.exports = class AppManager extends React.Component {
 						{this.state.totalUsers > 0 ? (
 							<UserList users={this.state.users} />
 						) : (
-							<p className="text-center"><i>No results found for "foo bar baz"</i></p>
+							<p className="text-center"><i>No results found</i></p>
 						)}
 					</React.Fragment>)}
 					
