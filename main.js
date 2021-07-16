@@ -16,10 +16,10 @@ app.use(express.static('build'));
 
 app.get('/search', async (req, resp) => {
 	const q = req.query.q;
-	const page = req.query['page'];
-	const perPage = req.query['per-page'];
-	const sortBy = req.query['sort-by'];
-	const order = req.query['order'];
+	const page = req.query.page;
+	const perPage = req.query.perpage;
+	const sortBy = req.query.sortby;
+	const order = req.query.order;
 	[users, total] = await searchUsers(q, page, perPage, sortBy, order);
 	resp.send({
 		'users': users,

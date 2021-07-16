@@ -19,7 +19,7 @@ module.exports = async function searchUsers(q, page, perPage, sortBy, order) {
 	const options = {
 		q: q,
 		page: page || 1,
-		perPage: perPage || 10,
+		per_page: perPage || 10,
 		sort: sortBy || 'best match',
 		order: order || 'desc',
 	};

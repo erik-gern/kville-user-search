@@ -56,9 +56,9 @@ module.exports = class AppManager extends React.Component {
 			const getParams = {
 				q: this.state.q,
 				page: this.state.page,
-				'per-page': this.state.perPage,
-				'sort-by': this.state.sortBy,
-				'order': this.state.order,
+				perpage: this.state.perPage,
+				sortby: this.state.sortBy,
+				order: this.state.order,
 			};
 			const resp = await fetch('/search?' + 
 				Object.keys(getParams)
@@ -97,17 +97,17 @@ module.exports = class AppManager extends React.Component {
 	
 	onSearchSubmit(params) {
 		this.setState(params);
-		this.fetchUsers();
+		setTimeout(() => { this.fetchUsers(); }, 100);
 	}
 	
 	onPreviousPage() {
 		this.setState({ page: this.state.page - 1 });
-		this.fetchUsers();
+		setTimeout(() => { this.fetchUsers(); }, 100);
 	}
 	
 	onNextPage() {
 		this.setState({ page: this.state.page + 1 });
-		this.fetchUsers();
+		setTimeout(() => { this.fetchUsers(); }, 100);
 	}
 	
 	render() {
