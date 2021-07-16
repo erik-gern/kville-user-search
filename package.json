@@ -13,7 +13,7 @@
     "build-babel": "npx babel src -d lib",
     "build-browserify": "browserify lib/browser.js -o build/js/app.js",
     "test": "mocha --recursive test/*",
-    "start": "node main.js",
+    "start": "forever start main.js --port=1337",
     "start-dev": "node main.js --port=8800"
   },
   "repository": {
